@@ -9,7 +9,7 @@ y0=0; %launch height (m)
 v0=100; %initial velocity (m/s)
 
 %% link matlab to simulink
-s=sim('cannon','StopTime','25','MaxStep','0.01'); %run cannon.slx
+s=sim('cannon4_group03.slx','StopTime','25','MaxStep','0.01'); %run cannon4.slx
 r=s.get('simout'); %call the get method from class s
 x=r(:,1); %define x pos
 y=r(:,2); %define y pos
@@ -20,6 +20,6 @@ figure(1);
 plot(x(L),y(L),'DisplayName',[num2str(theta),'deg']);
 axis([0 350 0 150]);
 title({'Trajectory of cannon ball'});
-txt=sprinf('Ball stoped ad x=%0.1f m',x(length(L)));
+txt=sprintf('Ball stoped at x=%0.1f m',x(length(L)));
 text(max(x)/3,max(y)/5,txt);
 
